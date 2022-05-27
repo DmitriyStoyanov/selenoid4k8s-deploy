@@ -1,5 +1,5 @@
 {{- if .Values.ingress.enabled -}}
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ .Release.Name }}-selenoid
@@ -16,14 +16,20 @@ spec:
     http:
       paths:
         - path: /
+          pathType: Prefix
           backend:
-            serviceName: {{ .Release.Name }}-selenoid
-            servicePort: 8080
+            service:
+              name: {{ .Release.Name }}-selenoid
+              port:
+                number: 8080
   - host: {{ .Values.ingress.hostHub }}
     http:
       paths:
         - path: /
+          pathType: Prefix
           backend:
-            serviceName: {{ .Release.Name }}-selenoid
-            servicePort: 4444
+            service:
+              name: {{ .Release.Name }}-selenoid
+              port:
+                number: 4444
 {{- end -}}
