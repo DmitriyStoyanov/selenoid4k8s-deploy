@@ -52,3 +52,7 @@ spec:
       nodeSelector:
 {{ toYaml .Values.placement.nodeSelector | indent 8 }}
     {{- end }}
+    {{- if .Values.placement.tolerations }}
+      tolerations:
+{{ toYaml .Values.placement.tolerations | indent 8 }}
+    {{- end }}
