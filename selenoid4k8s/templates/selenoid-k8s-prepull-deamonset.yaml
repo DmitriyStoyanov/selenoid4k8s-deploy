@@ -28,6 +28,9 @@ spec:
         - grep image /etc/selenoid/browsers.json | awk '{print $2}' | tr -d ',' | tr -d '"' |
           xargs -I{} docker pull {}
         resources:
+          requests:
+            memory: "16Mi"
+            cpu: "10m"
           limits:
             memory: "128Mi"
             cpu: "500m"
