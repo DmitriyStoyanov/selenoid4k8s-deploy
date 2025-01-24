@@ -95,10 +95,10 @@ config:
 
 browsers:
   chrome:
-    default: "86.0"
+    default: "114.0"
     versions:
-      "86.0":
-        image: "selenoid/vnc:chrome_86.0"
+      "114.0":
+        image: "selenoid/vnc:chrome_114.0"
         port: "4444"
         shmSize: 536870912
         resources:
